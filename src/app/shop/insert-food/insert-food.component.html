@@ -1,0 +1,29 @@
+<div style="display: flex; flex-direction: column; height: 400px; width: 500px; margin: 20px;">
+  <p>เพิ่มเมนูใหม่</p>
+  <label>เลขอาหาร</label>
+  <input type="text" name = "foodId" #food_id>
+
+  <label>ชื่ออาหาร</label>
+  <input type="text" name = "name" #food_name>
+
+  <label>ราคาอาหาร</label>
+  <input type="text" name = "price" #price>
+
+  <label >Url รูปภาพอาหาร</label>
+  <input type="text" name ="url" #image>
+
+  <label >เลือกประเภทอาหาร</label>
+
+  <select name="type_name"  #type_id>
+    <option  value="1">อาหารจานเดียว</option>
+    <option  value="2">กับข้าว</option>
+    <option  value="3">อาหารว่าง</option>
+    <option  value="4">ของหวาน</option>
+  </select>
+
+  <button (click)="addnew(+food_id.value,food_name.value,+price.value,image.value,+type_id.value)">เพิ่มสินค้า</button>
+  <button (click)="close()">กลับ</button>
+
+</div>
+
+

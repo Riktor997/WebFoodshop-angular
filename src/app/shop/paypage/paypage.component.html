@@ -1,0 +1,18 @@
+<div style="display: flex; flex-direction: column; height: 400px; width: 500px; margin: 20px;">
+
+  <label>ชื่อลูกค้า</label>
+  <input type="text" name = "foodId" #name>
+
+  <label>เบอร์โทร</label>
+  <input type="text" phone = "name" #phone>
+
+  <label>ที่อยู่</label>
+  <input type="text" name = "ที่อยู่" #address>
+
+  <button mat-flat-button color="primary" (click)="paytocart(name.value,phone.value,address.value)" style="margin-top: 20px;">สั่งซื้ออาหารทั้งหมด</button>
+
+
+
+</div>
+
+

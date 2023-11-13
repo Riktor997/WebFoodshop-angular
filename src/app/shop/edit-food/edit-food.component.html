@@ -1,0 +1,29 @@
+<div style="display: flex; flex-direction: column; height: 400px; width: 500px; margin: 20px;">
+  <p>แก้ไขรายระเอียดอาหาร</p>
+  <label>หมายเลขอาหาร</label>
+  <input type="text" name = "name" #food_id value="{{selectedFood.fid}}">
+
+  <label>ชื่ออาหาร</label>
+  <input type="text" name = "name" #food_name value="{{selectedFood.food_name}}">
+
+  <label>ราคาอาหาร</label>
+  <input type="text" name = "price" #price value="{{selectedFood.price}}">
+
+  <label >Url รูปภาพอาหาร</label>
+  <input type="text" name ="url" #image value="{{selectedFood.image}}">
+
+  <label >เลือกประเภทอาหาร</label>
+  <select name="type_name"  #type_id>
+    <option *ngFor="let listType of foodsType" value="{{listType.fid}}"
+    [selected]="selectedFood.type_id == listType.fid">{{listType.name}}</option>
+  </select>
+
+
+
+  <!-- <button (click)="save(+food_id.value,food_name.value,+price.value,image.value,+type_id.value)">เพิ่มสินค้า</button> -->
+  <button (click)="close()">กลับ</button>
+  <button (click)="check()">check</button>
+
+</div>
+
+

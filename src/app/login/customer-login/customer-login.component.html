@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Login Form Example</title>
+  <link rel="stylesheet" href="customer-login.component.scss">
+
+</head>
+<body>
+<button mat-raised-button color="primary" routerLink="/shop_customer">go to shop customer Link</button>
+<div class="login-form">
+  <form>
+    <h1>Login customer</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="name" placeholder="name" #name>
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" #password>
+      </div>
+      <a href="#" class="link">Forgot Your Password?</a>
+    </div>
+    <div class="action">
+      <button routerLink="/register-customer">Register</button>
+      <button (click)="login(name.value,password.value)">Sign in</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

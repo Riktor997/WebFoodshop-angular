@@ -1,0 +1,49 @@
+<nav class="navbar" style="margin-bottom: 50px; background-color: rgb(0, 0, 0);">
+  <div class="container">
+    <a class="navbar-brand" style="padding-left: 20px; color: white;">ตระกร้าสินค้า</a>
+    <button mat-raised-button color="primary" routerLink="/shop_customer">กลับไปหน้าช็อป</button>
+  </div>
+    <form class="d-flex" role="search">
+      <!-- <input class="form-control me-2" type="search" placeholder="ค้นหาสินค้า" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">ค้นหา</button> -->
+    </form>
+</nav>
+<div class="container">
+  <span *ngFor="let count of Len_cart">จำนวนสินค้าในตระกร้า - {{count.sum}}</span>
+  <table class="table table-striped" >
+    <thead>
+        <th>รูปภาพ</th>
+        <th>ชื่ออาหาร</th>
+        <th>ราคา</th>
+        <th>จำนวน</th>
+    </thead>
+    <tbody *ngFor="let item of foods_onCart; let i = index">
+      <tr>
+        <td><img src="{{item.image}}" alt="" style="width: 150px; height: 100px;"></td>
+        <td>{{ item.food_name }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <button type="button" *ngIf="item.amount >= 1" [disabled]="item.amount <= 1" style="margin-right: 10px;" (click)="RemoveAmount(item.food_id)">-</button>
+          <span>{{ this.item.amount }}</span>
+          <button style="margin-left: 10px;" (click)="Addamount(item.food_id)">+</button>
+        </td>
+        <td><button mat-raised-button color="warn" (click)="removeinCart(item.food_id)">ลบออกจากตะกร้า</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngFor="let total of this.totalOncart" style="display: flex;flex-direction: column;">
+    <strong style="margin-top: 20px;">ค่าส่ง - {{this.total.COD}}</strong>
+    <strong style="margin-top: 20px;">ราคารวมทั้งหมด - {{this.total.totalprice}}</strong>
+  </div>
+</div>
+<div>
+<div class="container" style="padding-top: 20px;">
+  <button mat-raised-button color="warn" (click)="removeAllCart()">ลบสินค้าออกจากตะกร้าทั้งหมด</button>
+  <button mat-flat-button color="primary" (click)="PayIncart()">สั่งซื้ออาหารทั้งหมด</button>
+</div>
+<br>
+
+
+
+
+

@@ -1,0 +1,31 @@
+<p>
+  <mat-toolbar style="background-color: black;">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      </button>
+      <span style="color:white ;padding-right: 20px;">รายการออเดอร์ของลูกค้า</span>
+      <button mat-flat-button color="primary" routerLink="/shop_customer">กลับไปหน้าช็อป</button>
+  </mat-toolbar>
+</p>
+
+<div class="container" >
+    <table class="table table-striped" >
+      <thead>
+          <th>วันที่สั่ง</th>
+          <th>วันที่ส่งสินค้า</th>
+          <th>ราคาทั้งหมด</th>
+          <th>สถานะ</th>
+      </thead>
+      <tbody *ngFor="let order of ordercustomer; let i = index">
+        <tr>
+          <td>{{order.sdate}}</td>
+          <td>{{order.fdate}}</td>
+          <td>{{order.Totalprice}}</td>
+          <td >{{order.status}}</td>
+          <td><button mat-flat-button color="primary" (click)="DetailOrderCustomer(order.order_id , order.customer_id)">รายละเอียดสินค้า</button></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+

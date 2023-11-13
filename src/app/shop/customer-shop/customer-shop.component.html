@@ -1,0 +1,54 @@
+<head>
+  <link rel="stylesheet" href="customer-shop.component.scss">
+</head>
+<nav class="navbar" style="background-color: black;">
+  <div class="container">
+    <!-- <a class="navbar-brand" style="padding-left: 20px; color: white;">การจัดการสินค้า</a> -->
+    <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/01105727/8_big33-768x591.png"
+      style="width: 150px;height: 100px;cursor: pointer;" routerLink="/shop_customer">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" #name type="text" placeholder="ค้นหาอาหาร" name="Foodname" [(ngModel)]="FoodName" (ngModelChange)="Search()">
+    </form>
+    <div style="display: flex;">
+      <mat-icon routerLink="/customer_cart" style="color: white;width: 20px; width: 25px;"> shopping_cart </mat-icon>
+      <h6 routerLink="/customer_cart" style="color: white; padding-left: 10px; cursor: pointer;">ตระกร้าสินค้า</h6>
+    </div>
+    <div style="display: flex;">
+      <mat-icon style="color: white; width: 20px; width: 25px;" routerLink="/order-customer">local_shipping</mat-icon>
+      <h6 routerLink="/order-customer" style="color: white; padding-left: 10px; cursor: pointer;">รายการสั่งซื้อ</h6>
+    </div>
+    <h6 style="color: white;cursor: pointer;" (click)="logout()">ออกจากระบบ</h6>
+    <div class="search-bar" style="height: fit-content;">
+    </div>
+    <div style="display: flex;">
+      <mat-icon style="color: white;">account_circle</mat-icon>
+      <h6 style="color: white;">&nbsp; {{this.userLocal.name}}</h6>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div style="padding-top: 15px;
+              display: flex;
+              text-align: center;
+              height: 50px;">
+    <div style="padding-bottom: 50px;width: 100%;" *ngFor="let type of foodsType">
+      <button mat-button color="warn" (click)="foodTypename(type.name)" style="cursor: pointer;">{{type.name}}</button>
+    </div>
+  </div>
+</div>
+<hr width="100%" size="5" color="#FF0000" noshade>
+<div style="background-color: antiquewhite;">
+<div class="container">
+  <div class="row" style="margin-left:100px;">
+    <ng-container *ngFor="let food of foods" >
+      <div class="card col-md-3">
+        <img src="{{food.image}}" alt="">
+        <h5 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{food.food_name}}
+        </h5>
+        <p><strong>ราคา {{food.price}}</strong></p>
+        <button mat-raised-button color="primary" (click)="chk(food)" style="cursor: pointer;">รายละเอียดสินค้า</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+</div>

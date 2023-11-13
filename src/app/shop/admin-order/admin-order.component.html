@@ -1,0 +1,46 @@
+<nav class="navbar" style="margin-bottom: 50px; background-color: rgb(0, 0, 0);">
+  <div>
+    <span style="margin-left: 20px; color: white;" >รายการออเดอร์ของลูกค้า</span>
+  </div>
+    <form class="d-flex" role="search">
+    </form>
+</nav>
+<div class="container">
+  <button mat-raised-button color="primary" routerLink="/shop_admin">กลับไปหน้ารายการสินค้า</button>
+  <table class="table table-striped" >
+    <thead>
+        <th>หมายเลขออเดอร์</th>
+        <th>วันที่สั่ง</th>
+        <th>ชื่อลูกค้า</th>
+        <th>วันที่ส่งสินค้า</th>
+        <th>ราคาทั้งหมด</th>
+        <th>สถานะ</th>
+    </thead>
+    <tbody *ngFor="let order of food_order; let i = index">
+      <tr>
+        <td>{{order.order_id}}</td>
+        <td>{{order.sdate}}</td>
+        <td>{{order.name_customer}}</td>
+        <td>{{order.fdate}}</td>
+        <td>{{order.Totalprice}}</td>
+        <td>{{order.status}}</td>
+        <td><button mat-flat-button color="primary" (click)="DetailOrder(order.order_id,order.customer_id)">รายละเอียดสินค้า</button></td>
+        <td>
+          <select name="status"  #status>
+            <option  value=" "></option>
+            <option  value="packed">ชำระเงินแล้ว</option>
+            <option  value="Successful">ส่งสินค้าสำเร็จ</option>
+          </select>
+           &nbsp;
+          <button mat-stroked-button (click)="changeStatus(order.order_id,order.customer_id,status.value)">แก้ไขสถานะ</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<div>
+
+
+
+
+

@@ -1,0 +1,25 @@
+<div style="display: flex; flex-direction: column;
+height: 450px; width: 550px; margin: 20px; background-color: blanchedalmond;">
+  <p>เพิ่มเมนูใหม่</p>
+  <label>เลขอาหาร</label>
+  <input type="text" name = "foodId" #food_id value="{{selectedFoodType}}">
+
+  <label>ชื่ออาหาร</label>
+  <input type="text" name = "name" #food_name value="{{selectedFoodType}}">
+
+  <label>ราคาอาหาร</label>
+  <input type="text" name = "price" #price value="{{selectedFoodType}}">
+
+  <label for="">Url รูปภาพอาหาร</label>
+  <input type="text" name ="url" #image value="{{selectedFoodType}}">
+
+  <label for="">เลือกประเภทอาหาร</label>
+  <select name="type_name" id="" #type_id>
+    <option  *ngFor="let type of foodsType" value="{{type.name}}">{{type.name}}</option>
+  </select>
+
+  <!-- <button (click)="addnew(food_id.value,food_name.value,price.value,image.value,type_id.value)">เพิ่มสินค้า</button> -->
+  <button  (click)="close()">กลับ</button>
+
+</div>
+

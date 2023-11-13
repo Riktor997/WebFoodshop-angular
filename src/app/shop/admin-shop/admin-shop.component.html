@@ -1,0 +1,63 @@
+<nav class="navbar" style="background-color: black;">
+  <div class="container">
+    <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/01105727/8_big33-768x591.png"
+      style="width: 150px;height: 100px;cursor: pointer;" routerLink="/shop_customer">
+    <form class="d-flex" role="search">
+      <input #name class="form-control me-2" type="search" placeholder="ค้นหาอาหาร" name="Foodname" [(ngModel)]="FoodName" (ngModelChange)="Search()">
+    </form>
+    <div style="display: flex;">
+      <mat-icon  routerLink="/order-admin" style="color: white;">reorder</mat-icon>
+      <h6 style="color: white; padding-left: 10px; cursor: pointer;">รายการออเดอร์</h6>
+    </div>
+    <div style="display: flex;">
+      //
+    </div>
+    <span style="color: white;cursor: pointer;" (click)="logout()">ออกจากระบบ</span>
+    <div class="search-bar" style="height: fit-content;">
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="padding-bottom: 50px;padding-top: 50px;">
+  <div>
+  <select name="t_name" #type_name (click)="foodTypename(type_name.value)" style="padding-right: 20px;">
+    <option value="อาหารจานเดียว" selected>อาหารจานเดียว</option>
+    <option value="กับข้าว">กับข้าว</option>
+    <option value="อาหารว่าง">อาหารว่าง</option>
+    <option value="ของหวาน">ของหวาน</option>
+  </select>
+  <button mat-raised-button color="primary" (click)="showAllfoods()" style="margin-right:20px; margin-left: 20px;">แสดงทั้งหมด</button>
+  <button mat-raised-button color="primary" (click)="InsertFood()">เพิ่มสินค้า</button>
+</div>
+
+<div style="display: flex;flex-direction: row;">
+  <div style="width: 600px;">
+    <mat-selection-list #food [multiple]="false" (selectionChange)="show($event.options[0])"
+      style="max-height: 100vh;overflow: auto;">
+      <mat-list-option *ngFor="let food of this.foods" [value]="food" style="width: 550px;height: 160px;">
+        <div>
+          <div class="card-body">
+            <img src="{{food.image}}" alt="" height="150px" width="200px">
+            {{food.food_name}}
+          </div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div style="margin-left: 150px;">
+    <div *ngIf="selectedFood != undefined">
+      <div style="display: flex;flex-direction: column;">
+        <img src="{{this.selectedFood.image}}" alt="" width="500px">
+        <span>{{this.selectedFood.food_name}}</span>
+        <span>ราคาสินค้า {{this.selectedFood.price}}</span>
+        <br>
+        <button mat-raised-button color="accent" (click)="edit()">แก้ไขสินค้า</button>
+         <br>
+        <button mat-raised-button color="warn" (click)="removeData(this.selectedFood.food_id)">ลบสินค้า</button>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
